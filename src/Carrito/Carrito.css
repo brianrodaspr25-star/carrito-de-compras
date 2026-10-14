@@ -1,0 +1,29 @@
+.carrito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-tarjeta);
+  border-radius: var(--radio);
+  border: 2px solid var(--color-primario);
+  box-shadow: var(--sombra);
+}
+
+.carrito__icono {
+  font-size: 2rem;
+}
+
+.carrito__texto {
+  font-size: 1.1rem;
+  color: var(--color-texto-suave);
+}
+
+.carrito__cantidad {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin-right: 0.25rem;
+}

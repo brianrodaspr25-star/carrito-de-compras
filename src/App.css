@@ -1,1 +1,32 @@
+tienda {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
 
+.tienda__header {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-bottom: 2.5rem;
+  border-radius: var(--radio);
+  background: linear-gradient(135deg, var(--color-primario), #7c3aed);
+  color: white;
+  box-shadow: var(--sombra);
+}
+
+.tienda__titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.tienda__subtitulo {
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+.tienda__productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
