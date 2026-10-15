@@ -18,6 +18,16 @@ function App() {
     setCantidad(aumentar)
   }
 
+  function eliminarProducto () {
+
+    if (cantidad === 0) {
+      return
+    }
+
+    const decrementar = cantidad - 1
+    setCantidad(decrementar)
+  }
+
   return (
     <main className="tienda" >
 
@@ -38,7 +48,7 @@ function App() {
       ) )}
       </section>
 
-      <Carrito cantidad={cantidad} />
+      <Carrito cantidad={cantidad} onQuitar={eliminarProducto} />
 
     </main>
   )
