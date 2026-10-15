@@ -57,7 +57,7 @@ function App() {
       return
     }
 
-    setNombreTienda(textoInput)
+    setNombreTienda(nombre)
 
     setTextoInput("")
 
@@ -67,7 +67,7 @@ function App() {
     <main className="tienda" >
 
       <header className="tienda__header">
-        <h1 className="tienda__titulo" >{nombreTienda || "Mi tienda"}</h1>
+        <h1 className="tienda__titulo" >{nombreTienda}</h1>
         <p className="tienda__subtitulo" >Accesorios para tu computadora</p>
         <div className="tienda__formulario">
           <input 
