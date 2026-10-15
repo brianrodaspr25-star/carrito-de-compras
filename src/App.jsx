@@ -13,6 +13,7 @@ function App() {
 
   const [carrito, setCarrito] = useState([])
   const [nombreTienda, setNombreTienda] = useState("Tienda de Brian")
+  const [textoInput, setTextoInput] = useState("")
 
   let total = 0
 
@@ -41,11 +42,25 @@ function App() {
     setCarrito(nuevoCarrito)
   }
 
-  function cambiarNombre(evento) {
+  function actualizarTexto(evento) {
 
     const nombre = evento.target.value
 
-    setNombreTienda(nombre)
+    setTextoInput(nombre)
+  }
+
+  function guardarNombre () {
+
+    const nombre = textoInput.trim()
+
+    if (nombre === ""){
+      return
+    }
+
+    setNombreTienda(textoInput)
+
+    setTextoInput("")
+
   }
 
   return (
@@ -54,13 +69,16 @@ function App() {
       <header className="tienda__header">
         <h1 className="tienda__titulo" >{nombreTienda || "Mi tienda"}</h1>
         <p className="tienda__subtitulo" >Accesorios para tu computadora</p>
-        <input 
-        className="tienda__input"
-        type="text" 
-        placeholder="Escribe el nombre de tu tienda"
-        value={nombreTienda}
-        onChange={cambiarNombre}
-        />
+        <div className="tienda__formulario">
+          <input 
+            className="tienda__input"
+            type="text" 
+            placeholder="Escribe el nombre de tu tienda"
+            value={textoInput}
+            onChange={actualizarTexto}
+          />
+          <button className="tienda__boton" onClick={guardarNombre}>Confirmar</button>
+        </div>
       </header>
 
       <section className="tienda__productos">
