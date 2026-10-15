@@ -13,6 +13,13 @@ function App() {
 
   const [carrito, setCarrito] = useState([])
 
+  let total = 0
+
+  carrito.forEach( (producto) => {
+
+    total += producto.precio
+  })
+
 
   function agregarProducto (producto) {
 
@@ -54,7 +61,7 @@ function App() {
       ) )}
       </section>
 
-      <Carrito cantidad={carrito.length} onQuitar={eliminarProducto} />
+      <Carrito cantidad={carrito.length} onQuitar={eliminarProducto} total={total} />
 
     </main>
   )

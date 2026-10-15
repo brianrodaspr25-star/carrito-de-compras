@@ -54,3 +54,15 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+.carrito__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.carrito__total {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+}
