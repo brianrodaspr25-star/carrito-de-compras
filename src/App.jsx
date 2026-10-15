@@ -11,21 +11,27 @@ const productos = [
 
 function App() {
 
-  const [cantidad, setCantidad] = useState(0)
+  const [carrito, setCarrito] = useState([])
 
-  function agregarProducto () {
-    const aumentar = cantidad + 1
-    setCantidad(aumentar)
+
+  function agregarProducto (producto) {
+
+    const newCarrito = [...carrito]
+    newCarrito.push(producto)
+
+    setCarrito(newCarrito)
   }
 
   function eliminarProducto () {
 
-    if (cantidad === 0) {
+    if (carrito.length === 0) {
       return
     }
 
-    const decrementar = cantidad - 1
-    setCantidad(decrementar)
+    const nuevoCarrito = [...carrito]
+    nuevoCarrito.pop()
+
+    setCarrito(nuevoCarrito)
   }
 
   return (
@@ -43,12 +49,12 @@ function App() {
           nombre={producto.nombre}
           precio={producto.precio}
           icono={producto.icono}
-          onAgregar={agregarProducto}
+          onAgregar={() => agregarProducto(producto)}
         />
       ) )}
       </section>
 
-      <Carrito cantidad={cantidad} onQuitar={eliminarProducto} />
+      <Carrito cantidad={carrito.length} onQuitar={eliminarProducto} />
 
     </main>
   )
