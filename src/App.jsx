@@ -12,6 +12,7 @@ const productos = [
 function App() {
 
   const [carrito, setCarrito] = useState([])
+  const [nombreTienda, setNombreTienda] = useState("Tienda de Brian")
 
   let total = 0
 
@@ -19,7 +20,6 @@ function App() {
 
     total += producto.precio
   })
-
 
   function agregarProducto (producto) {
 
@@ -41,12 +41,26 @@ function App() {
     setCarrito(nuevoCarrito)
   }
 
+  function cambiarNombre(evento) {
+
+    const nombre = evento.target.value
+
+    setNombreTienda(nombre)
+  }
+
   return (
     <main className="tienda" >
 
       <header className="tienda__header">
-        <h1 className="tienda__titulo" >Mi tienda</h1>
+        <h1 className="tienda__titulo" >{nombreTienda || "Mi tienda"}</h1>
         <p className="tienda__subtitulo" >Accesorios para tu computadora</p>
+        <input 
+        className="tienda__input"
+        type="text" 
+        placeholder="Escribe el nombre de tu tienda"
+        value={nombreTienda}
+        onChange={cambiarNombre}
+        />
       </header>
 
       <section className="tienda__productos">
