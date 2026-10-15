@@ -6,10 +6,10 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
-  background-color: var(--color-tarjeta);
-  border-radius: var(--radio);
-  border: 2px solid var(--color-primario);
-  box-shadow: var(--sombra);
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #4f46e5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .carrito__icono {
@@ -18,12 +18,12 @@
 
 .carrito__texto {
   font-size: 1.1rem;
-  color: var(--color-texto-suave);
+  color: #6b7280;
 }
 
 .carrito__cantidad {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-primario);
+  color: #4f46e5;
   margin-right: 0.25rem;
 }

@@ -8,10 +8,10 @@ tienda {
   text-align: center;
   padding: 2.5rem 1rem;
   margin-bottom: 2.5rem;
-  border-radius: var(--radio);
-  background: linear-gradient(135deg, var(--color-primario), #7c3aed);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: white;
-  box-shadow: var(--sombra);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .tienda__titulo {
