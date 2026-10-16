@@ -11,7 +11,7 @@ function Carrito ({cantidad, onQuitar, total}) {
                 </p>
                 <p className="carrito__total">Total: Q{total}</p>
             </div>
-            <button className="carrito__boton" onClick={onQuitar} disabled={cantidad === 0} >Eliminar producto</button>
+            <button className="carrito__boton" onClick={onQuitar} disabled={cantidad === 0} >Quitar producto</button>
         </section>
     )
 }
