@@ -112,7 +112,7 @@ function App() {
       ) )}
       </section>
 
-      <Carrito cantidad={cantidadTotal} onQuitar={eliminarProducto} total={total} />
+      <Carrito onSumar={agregarProducto} items={carrito} cantidad={cantidadTotal} onQuitar={eliminarProducto} total={total} />
 
     </main>
   )
