@@ -49,16 +49,38 @@ function App() {
     
   }
 
-  function eliminarProducto () {
+  function restarProducto (producto) {
 
-    if (carrito.length === 0) {
+    const productoExistente = carrito.find((item) => item.nombre === producto.nombre)
+    
+    if (productoExistente && productoExistente.cantidad > 1) {
+
+      const nuevoCarrito = carrito.map( (item) => {
+        if (item.nombre === producto.nombre) {
+          const itemActualizado = {...item, cantidad: item.cantidad - 1}
+          return itemActualizado
+        }
+        return item
+      })
+      setCarrito(nuevoCarrito)
       return
     }
 
-    const nuevoCarrito = [...carrito]
-    nuevoCarrito.pop()
+    eliminarProducto(producto)
+  }
+
+  function eliminarProducto (producto) {
+
+    const nuevoCarrito = carrito.filter((item) => {
+      return item.nombre !== producto.nombre
+    } )
 
     setCarrito(nuevoCarrito)
+  }
+
+  function vaciarCarrito () {
+
+    setCarrito([])
   }
 
   function actualizarTexto(evento) {
@@ -112,7 +134,15 @@ function App() {
       ) )}
       </section>
 
-      <Carrito onSumar={agregarProducto} items={carrito} cantidad={cantidadTotal} onQuitar={eliminarProducto} total={total} />
+      <Carrito 
+      items={carrito} 
+      cantidad={cantidadTotal}
+      total={total} 
+      onSumar={agregarProducto} 
+      onVaciar={vaciarCarrito} 
+      onRestar={restarProducto}
+      onQuitar={eliminarProducto}
+      />
 
     </main>
   )
