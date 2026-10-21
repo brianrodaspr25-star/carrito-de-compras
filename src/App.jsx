@@ -16,18 +16,37 @@ function App() {
   const [textoInput, setTextoInput] = useState("")
 
   let total = 0
+  let cantidadTotal = 0
 
   carrito.forEach( (producto) => {
 
-    total += producto.precio
+    cantidadTotal += producto.cantidad
+
+    total += producto.precio * producto.cantidad
   })
 
   function agregarProducto (producto) {
 
-    const newCarrito = [...carrito]
-    newCarrito.push(producto)
+    const productoExistente = carrito.find((item) => item.nombre === producto.nombre)
 
-    setCarrito(newCarrito)
+    if (!productoExistente) {
+      const nuevoProducto = {...producto, cantidad: 1}
+      const nuevoCarrito = [...carrito]
+      nuevoCarrito.push(nuevoProducto)
+      setCarrito(nuevoCarrito)
+      return
+    }
+
+    const nuevoCarrito = carrito.map( (item) => {
+      if (item.nombre === producto.nombre) {
+        const itemActualizado = {...item, cantidad: item.cantidad + 1}
+        return itemActualizado
+      }
+      return item
+    })
+
+    setCarrito(nuevoCarrito)
+    
   }
 
   function eliminarProducto () {
@@ -93,7 +112,7 @@ function App() {
       ) )}
       </section>
 
-      <Carrito cantidad={carrito.length} onQuitar={eliminarProducto} total={total} />
+      <Carrito cantidad={cantidadTotal} onQuitar={eliminarProducto} total={total} />
 
     </main>
   )
