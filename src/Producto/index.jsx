@@ -23,14 +23,16 @@ function Producto ({nombre, precio, onAgregar, icono}) {
             <span className="producto__icono">{icono}</span>
             <h3 className="producto__nombre">{nombre}</h3>
             <p className="producto__precio">Q{precio}</p>
-            <select className="producto__select" value={cantidadSeleccionada} onChange={actualizarCantidad}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+            <div className="producto__acciones">
+                <select className="producto__select" value={cantidadSeleccionada} onChange={actualizarCantidad}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             <button className="producto__boton" onClick={agregarAlCarrito}>Agregar al carrito</button>
+            </div>
         </article>
     )
 }
