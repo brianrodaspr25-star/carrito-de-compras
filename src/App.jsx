@@ -25,12 +25,12 @@ function App() {
     total += producto.precio * producto.cantidad
   })
 
-  function agregarProducto (producto) {
+  function agregarProducto (producto, cantidad) {
 
     const productoExistente = carrito.find((item) => item.nombre === producto.nombre)
 
     if (!productoExistente) {
-      const nuevoProducto = {...producto, cantidad: 1}
+      const nuevoProducto = {...producto, cantidad: cantidad}
       const nuevoCarrito = [...carrito]
       nuevoCarrito.push(nuevoProducto)
       setCarrito(nuevoCarrito)
@@ -39,7 +39,7 @@ function App() {
 
     const nuevoCarrito = carrito.map( (item) => {
       if (item.nombre === producto.nombre) {
-        const itemActualizado = {...item, cantidad: item.cantidad + 1}
+        const itemActualizado = {...item, cantidad: item.cantidad + cantidad}
         return itemActualizado
       }
       return item
@@ -129,7 +129,7 @@ function App() {
           nombre={producto.nombre}
           precio={producto.precio}
           icono={producto.icono}
-          onAgregar={() => agregarProducto(producto)}
+          onAgregar={(cantidad) => agregarProducto(producto, cantidad)}
         />
       ) )}
       </section>

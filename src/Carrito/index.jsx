@@ -43,7 +43,7 @@ function Carrito ({cantidad, onQuitar, total, items, onSumar, onRestar, onVaciar
                                     <div className="modal__controles">
                                         <button className="modal__cantidad-boton" onClick={() => onRestar(item)}>-</button>
                                         <span className="modal__cantidad">{item.cantidad}</span>
-                                        <button className="modal__cantidad-boton" onClick={() => onSumar(item)}>+</button>
+                                        <button className="modal__cantidad-boton" onClick={() => onSumar(item, 1)}>+</button>
                                     </div>
                                     <span className="modal__subtotal">Q{item.cantidad * item.precio} </span>
                                     <button className="modal__eliminar" onClick={() => onQuitar(item)}>🗑️</button>
