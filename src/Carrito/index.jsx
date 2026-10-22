@@ -27,24 +27,33 @@ function Carrito ({cantidad, onQuitar, total, items, onSumar, onRestar, onVaciar
             <button className="carrito__boton" onClick={abrirModal}>Ver carrito</button>
             { estaAbierto && createPortal (
                 <div className="modal">
-                    <button onClick={cerrarModal}>X</button>
+                    <div className="modal__contenido">
+                    <h2 className="modal__titulo">Tu carrito</h2>
+                    <button className="modal__cerrar" onClick={cerrarModal}>X</button>
                     { items.length === 0 ? <p className="carrito__vacio">Tu carrito está vacío</p> :
-                        <ul>
+                        <ul className="modal__lista">
                             {items.map( (item) => (
-                                <li key={item.nombre}>
-                                    <span>{item.icono}</span>
-                                    <span>{item.nombre}</span>
-                                    <span>Precio: Q{item.precio}</span>
-                                    <button onClick={() => onRestar(item)}>-</button>
-                                    <span>Cantidad: {item.cantidad} {item.cantidad === 1 ? "unidad" : "unidades"} </span>
-                                    <button onClick={() => onSumar(item)}>+</button>
-                                    <span> Subtotal: Q{item.cantidad * item.precio} </span>
-                                    <button onClick={() => onQuitar(item)}>🗑️</button>
+                                <li className="modal__item" 
+                                    key={item.nombre}>
+                                    <span className="modal__icono">{item.icono}</span>
+                                    <div className="modal__info">
+                                        <span className="modal__nombre">{item.nombre}</span>
+                                        <span className="modal__precio">Q{item.precio} c/u</span>
+                                    </div>
+                                    <div className="modal__controles">
+                                        <button className="modal__cantidad-boton" onClick={() => onRestar(item)}>-</button>
+                                        <span className="modal__cantidad">{item.cantidad}</span>
+                                        <button className="modal__cantidad-boton" onClick={() => onSumar(item)}>+</button>
+                                    </div>
+                                    <span className="modal__subtotal">Q{item.cantidad * item.precio} </span>
+                                    <button className="modal__eliminar" onClick={() => onQuitar(item)}>🗑️</button>
                                 </li>
                             ))}
                         </ul>
                     }
+                    <p className="modal__total">Total: Q{total}</p>
                     <button className="carrito__boton" onClick={onVaciar} disabled={cantidad === 0} >Vaciar carrito</button>
+                    </div>
                 </div>,
                 document.body
             )}
