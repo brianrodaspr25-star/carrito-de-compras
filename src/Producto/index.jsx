@@ -1,6 +1,8 @@
 import { useState } from "react"
 import "./Producto.css"
 
+const opcionesCantidad = Array(10).fill(null).map((_, indice) => indice + 1)
+
 function Producto ({nombre, precio, onAgregar, icono}) {
 
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(1)
@@ -25,11 +27,9 @@ function Producto ({nombre, precio, onAgregar, icono}) {
             <p className="producto__precio">Q{precio}</p>
             <div className="producto__acciones">
                 <select className="producto__select" value={cantidadSeleccionada} onChange={actualizarCantidad}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    {opcionesCantidad.map( (numero) => (
+                        <option key={numero}  value={numero}>{numero}</option>
+                    ))}
                 </select>
             <button className="producto__boton" onClick={agregarAlCarrito}>Agregar al carrito</button>
             </div>
